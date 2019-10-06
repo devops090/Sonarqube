@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Source Common Functions
-curl -s "https://raw.githubusercontent.com/devops2k18/sonarNew/master/common-functions.sh" >/tmp/common-functions.sh
+curl -s "https://raw.githubusercontent.com/devops090/Sonarqube/master/common-functions.sh" >/tmp/common-functions.sh
 #source /root/scripts/common-functions.sh
 source /tmp/common-functions.sh
 
@@ -87,9 +87,9 @@ else
 fi
 
 ## Downloading SonarQube 
-#VER=$(curl -s https://sonarsource.bintray.com/Distribution/sonarqube/  | tail -n 10 | awk -F '[<,>]' '{print $5}' | grep zip$ |tail -1)
-#URL="https://sonarsource.bintray.com/Distribution/sonarqube/$VER"
-URL=https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.9.1.zip
+VER=$(curl -s https://sonarsource.bintray.com/Distribution/sonarqube/  | tail -n 10 | awk -F '[<,>]' '{print $5}' | grep zip$ |tail -1)
+URL="https://sonarsource.bintray.com/Distribution/sonarqube/$VER"
+#URL=https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.9.1.zip
 TFILE="/opt/$(echo $URL |awk -F / '{print $NF}')"
 TDIR=$(echo $TFILE|sed -e 's/.zip//')
 rm -rf /opt/sonarqube
